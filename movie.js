@@ -1,6 +1,6 @@
 async function display()
 {
-    const url='https://imdb-api.com/API/AdvancedSearch/k_y87yrb5g?title_type=feature&user_rating=8.5,10&genres=family&countries=in&languages=te';
+    const url='https://imdb-api.com/API/AdvancedSearch/k_y87yrb5g?title_type=feature&user_rating=9,10&genres=family&countries=in&languages=te';
     const response=await fetch(url);
     var data=await response.json();
     return Promise.resolve(data);
