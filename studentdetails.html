@@ -1,0 +1,118 @@
+<html>
+    <body>
+        <center>
+        <h1>CVR college of Engineering</h1>
+        <h2>Student Details Information</h2>
+       Enter Name: <input type="text" id="name"><br><br>
+       Enter Rollno: <input type="text" id="rollno"><br><br>
+       Enter Password : <input type="password" id="password"><br><br>
+       <button id="insert">Insert</button>
+       <button id="select">Select</button>
+       <button id="update">Update</button>
+       <button id="clear">Clear</button>
+       <button id="delete">Delete</button>
+       <script type="module">
+           // Import the functions you need from the SDKs you need
+//import { initializeApp } from "firebase/app";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDWW3g0cKa3m9eOlmDTl2eHHCHNNStQR9k",
+  authDomain: "studentdetails-9b08d.firebaseapp.com",
+  databaseURL: "https://studentdetails-9b08d-default-rtdb.firebaseio.com",
+  projectId: "studentdetails-9b08d",
+  storageBucket: "studentdetails-9b08d.appspot.com",
+  messagingSenderId: "300175067810",
+  appId: "1:300175067810:web:98019fd0357174e0a825fb"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+import{
+    getDatabase,
+    ref,
+    get,
+    set,
+    child,
+    update,
+    remove
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+const db=getDatabase();
+var uname=document.getElementById("name");
+var rollno=document.getElementById("rollno");
+var pwd=document.getElementById("password");
+var ins=document.getElementById("insert");
+var sel=document.getElementById("select");
+var upd=document.getElementById("update");
+var clr=document.getElementById("clear");
+var del=document.getElementById("delete");
+function insertdata()
+{
+    set(ref(db,"studentdetails/"+rollno.value),
+    {
+        StudentName:uname.value,
+        RollNo:rollno.value,
+        Password:pwd.value
+
+    }).then(()=>alert("Student details are successfully stored in DB"))
+    .catch((err)=>alert("Details are not inserted"+err))
+}
+function updatedata()
+{
+    update(ref(db,"studentdetails/"+rollno.value),
+    {
+        StudentName:uname.value,
+        RollNo:rollno.value,
+        Password:pwd.value
+
+    }).then(()=>alert("Student details are successfully stored in DB"))
+    .catch((err)=>alert("Details are not inserted"+err))
+    cleardata();
+}
+function selectdata()
+{
+    const dbref=ref(db);
+    get(child(dbref,"studentdetails/"+rollno.value))
+    .then((copy)=>{
+        if(copy.exists())
+        {
+            uname.value=copy.val().StudentName;
+            rollno.value=copy.val().RollNo;
+            pwd.value=copy.val().Password;
+        }
+        else{
+            alert("No data found");
+        }
+    })
+    .catch((err)=>{
+        alert("Unsuccessful "+err);
+    });
+    cleardata();
+}
+function deletedata()
+{
+    remove(ref(db,"studentdetails/"+rollno.value),
+    {
+    }).then(()=>alert("Student details are successfully deleted in DB"))
+    .catch((err)=>alert("Details are not deleted"+err))   
+    cleardata();
+}
+function cleardata()
+{
+    uname.value="";
+    rollno.value="";
+    pwd.value="";
+}
+ins.addEventListener("click",insertdata);
+clr.addEventListener("click",cleardata);
+upd.addEventListener("click",updatedata);
+sel.addEventListener("click",selectdata);
+del.addEventListener("click",deletedata);
+
+       </script>
+       </center>
+    </body>
+</html>

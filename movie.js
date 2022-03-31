@@ -11,8 +11,8 @@ display().then(function(data)
     let{results}=data;
     table=  document.getElementById("table");
     results.forEach(element => {
-        let{title,imDbRating}=element;   
-      table.innerHTML+='<tr><td>'+title+'</td><td>'+imDbRating+'</td></tr>';
+        let{title,imDbRating,imDbRatingVotes}=element;   
+      table.innerHTML+='<tr><td>'+title+'</td><td>'+imDbRating+'</td><td>'+imDbRatingVotes+'</td></tr>';
     })
 },
 function()
