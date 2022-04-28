@@ -1,0 +1,70 @@
+<html>
+    <body>
+        <center>
+        <h1>Students Login Details</h1>
+        Enter Rollno: <input type="text" id="rollno"><br><br>
+        Enter Password : <input type="password" id="password"><br><br>
+        <button id="select">Select</button>
+       <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDWW3g0cKa3m9eOlmDTl2eHHCHNNStQR9k",
+  authDomain: "studentdetails-9b08d.firebaseapp.com",
+  databaseURL: "https://studentdetails-9b08d-default-rtdb.firebaseio.com",
+  projectId: "studentdetails-9b08d",
+  storageBucket: "studentdetails-9b08d.appspot.com",
+  messagingSenderId: "300175067810",
+  appId: "1:300175067810:web:98019fd0357174e0a825fb"
+};
+const app = initializeApp(firebaseConfig);
+import{
+    getDatabase,
+    ref,
+    get,
+    set,
+    child,
+    update,
+    remove
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+const db=getDatabase();
+var rollno=document.getElementById("rollno");
+var pwd=document.getElementById("password");
+var sel=document.getElementById("select");
+function selectdata()
+{
+    const dbref=ref(db);
+    get(child(dbref,"studentdetails/"+rollno.value))
+    .then((copy)=>{
+        if(copy.exists())
+        {
+            if(rollno.value==copy.val().RollNo && pwd.value==copy.val().Password)
+            {
+                alert("Succesful");
+               document.write("Successfully Logged in");
+            }
+           else{
+            alert("Incorrect Password");
+             }
+        
+        }
+        else{
+            alert("No data found");
+        }
+        
+    })
+    .catch((err)=>{
+        alert("Unsuccessful "+err);
+    });
+    cleardata();
+}
+function cleardata()
+{
+    uname.value="";
+    rollno.value="";
+    pwd.value="";
+}
+sel.addEventListener("click",selectdata);
+       </script>
+       </center>
+    </body>
+</html>
