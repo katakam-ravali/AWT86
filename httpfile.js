@@ -4,7 +4,7 @@ var server=http.createServer(function(req,res)
 {
     if(req.url=='/')
     {
-        file.readFile('awt1.txt',function(error,data)
+       file.readFile('awt1.txt',function(error,data)
         {
             console.log(data.toString())
         })
@@ -13,7 +13,7 @@ var server=http.createServer(function(req,res)
     }
     if(req.url=='/itb')
     {
-        file.writeFile('awt1.txt',"Hello,Ravali",function(error,data)
+        file.writeFile('awt2.txt',"Hello,Ravali",function(error,data)
         {
             console.log("Writing file")
         })
@@ -21,7 +21,7 @@ var server=http.createServer(function(req,res)
         res.end();
     }
 })
-server.listen(1212,function(err,data)
+server.listen(1200,function(err,data)
 {
     console.log("Server started")
 });
