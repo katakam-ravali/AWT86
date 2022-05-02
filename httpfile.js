@@ -13,7 +13,7 @@ var server=http.createServer(function(req,res)
     }
     if(req.url=='/itb')
     {
-        file.writeFile('awt1.txt',"Hello,Ravali",function(error,data)
+        file.writeFile('awt2.txt',"Hello,Ravali",function(error,data)
         {
             console.log("Writing file")
         })
