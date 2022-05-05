@@ -15,5 +15,8 @@
     "url": "https://github.com/katakam-ravali/AWT86/issues"
   },
   "homepage": "https://github.com/katakam-ravali/AWT86#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

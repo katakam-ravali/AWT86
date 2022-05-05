@@ -11,4 +11,4 @@ console.log("endianness of the CPU "+os.endianness());
 console.log("System Uptime "+os.uptime());
 var c = os.cpus();
 console.log("Total Number of Cpus:"+c.length);
-console.log(c);
+//console.log(c);
