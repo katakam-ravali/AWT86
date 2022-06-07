@@ -1,0 +1,18 @@
+<html>
+<body>
+<button (click)="getProducts()">Products</button>
+<br><br>
+<table border="1">
+<thead>
+<td>PID</td>
+<td>PName</td>
+<td>PCost</td>
+</thead>
+<tr *ngFor="let i of prd">
+<td>{{i.pid}}</td>
+<td>{{i.pname}}</td>
+<td>{{i.pcost}}</td>
+</tr>
+</table>
+</body>
+</html>

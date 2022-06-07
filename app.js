@@ -4,14 +4,14 @@ var fs=require('fs')
 app.use(express.json())
 app.get('/student',function(req,res)
 {
-    fs.readFile('Students.json',function(err,data)
+    fs.readFile('Stud.json',function(err,data)
     {
         res.send(data);
     })
 })
 app.get('/stud',(req,res)=>
 {
-    let myr=fs.createReadStream(__dirname+"/hello.html",'utf-8')
+    let myr=fs.createReadStream(__dirname+"/index1.html",'utf-8')
     myr.pipe(res);
 })
 app.post('/addstudent',(req,res)=>
@@ -22,11 +22,11 @@ app.post('/addstudent',(req,res)=>
         name:req.body.name,
         loc:req.body.loc
     }
-    fs.readFile('Students.json',function(err,data)
+    fs.readFile('Stud.json',function(err,data)
     {
        var sdata=JSON.parse(data);
        sdata.push(newstd);
-       fs.writeFile('Students.json',JSON.stringify(sdata),function(err,data)
+       fs.writeFile('Stud.json',JSON.stringify(sdata),function()
        {
            console.log("data inserted");
        })
@@ -36,7 +36,7 @@ app.post('/addstudent',(req,res)=>
 app.put('/studentupdate/:id',(req,res)=>
 {
     var id=req.body.id;
-    fs.readFile('Students.json',function(err,data){
+    fs.readFile('Stud.json',function(err,data){
         var sdata=JSON.parse(data);
         for(let i in sdata)
         {
@@ -45,7 +45,7 @@ app.put('/studentupdate/:id',(req,res)=>
                 sdata[i]['id']=req.body.id;
                 sdata[i]['name']=req.body.name;
                 sdata[i]['loc']=req.body.loc;
-                fs.writeFile('Students.json',JSON.stringify(sdata),function(err,data){
+                fs.writeFile('Stud.json',JSON.stringify(sdata),function(){
                         console.log("data updated");
                 })
             }
@@ -56,7 +56,7 @@ app.put('/studentupdate/:id',(req,res)=>
 app.delete('/deletestudent/:id',(req,res)=>
 {
     var id=req.body.id;
-    fs.readFile('Students.json',function(err,data)
+    fs.readFile('Stud.json',function(err,data)
     {
         var sdata=JSON.parse(data);
         for(let i in sdata)
@@ -64,7 +64,7 @@ app.delete('/deletestudent/:id',(req,res)=>
             if(id==sdata[i]['id'])
             {
                 sdata.splice(i,1);
-                fs.writeFile('Students.json',JSON.stringify(sdata),function(err,data)
+                fs.writeFile('Stud.json',JSON.stringify(sdata),function()
                 {
                     console.log("data deleted");
                 })
@@ -77,3 +77,5 @@ app.listen(1286,function()
 {
     console.log("Server started")
 })
+
+

@@ -1,0 +1,16 @@
+<html>
+    <body>
+      <ul [ngSwitch]="loginname">
+        <li *ngSwitchCase="'user'">
+        <p>User Logged in</p>
+        </li>
+        <li *ngSwitchCase="'admin'">
+        <p>Admin Logged in</p>
+        </li>
+        <li *ngSwitchDefault>
+        <p>Please Choose Login Name</p>
+        </li>
+        </ul>
+        
+    </body>
+</html>

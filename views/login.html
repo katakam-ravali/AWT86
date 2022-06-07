@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Login page</title><br><br>
+  </head>
+  <body>
+    <form id="login" method="post" action="/login">
+      <input type="text" name="rollno" id="rollno" placeholder="Enter your rollno" required><br><br>
+      <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
+      <input type="text" name="branch" id="branch" placeholder="Enter your branch" required><br><br>
+      <input type="text" name="email" id="email" placeholder="Enter your email" required><br><br>
+      <input type="password" name="password" id="password" placeholder="Enter your password" required><br><br>
+      <input type="submit" value="Login" id="login">
+    </form>
+    <script type="text/javascript" >
+        async function login(){
+          let rollno = document.getElementById("rollno")
+          let name = document.getElementById("name")
+          let branch = document.getElementById("branch")
+          let email = document.getElementById("email")
+          let password = document.getElementById("password")
+       //   let body = { rollno,name}
+          let option = {
+            method: 'POST',
+            body: JSON.stringify(body),
+          }
+          const response = await fetch(`/login`, option)
+          const json = await response.json()
+        }
+  
+        document.getElementById("login").addEventListener("click", login);
+        </script>
+        
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Welcome to {{title}} Created by {{ProjectOwner}}</h1>
+      Name of the page:<input type="text" [value]="title">
+       <br><br>
+       <input type="checkbox" [(ngModel)]="show">Student Details
+       <br><br>
+       <p *ngIf="!show">No data available</p>
+       <table *ngIf="show" border="2">
+    <tr><td>Name:</td><td>Ravali</td></tr>
+    <tr><td>Branch:</td><td>IT</td></tr>
+    <tr><td>Place:</td><td>SDPT</td></tr>
+    </table>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <form id="login" method="post" action="/">
+        ID:<input type="text" id="id">
+        Name:<input type="text" id="name">
+        Loc:<input type="text" id="loc">
+      <input type="submit" value="Login" id="login">
+    </form>
+    <script type="text/javascript" >
+        async function login(){
+        //     let id = document.getElementById("id")
+        // let name = document.getElementById("name")
+        // let loc = document.getElementById("loc")
+          let option = {
+            method: 'POST',
+            body: JSON.stringify(body),
+            
+          }
+          console.log(body);
+          const response = await fetch(`/l`, option)
+          const json = await response.json()
+        }
+  
+        document.getElementById("login").addEventListener("click", login);
+        </script>
+        
+  </body>
+</html>

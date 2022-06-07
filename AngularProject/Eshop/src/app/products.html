@@ -1,0 +1,18 @@
+<html>
+    <body>
+    <table border="2">
+        <thead>
+            <td>S.no</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Price</td>
+        </thead>
+        <tr *ngFor="let i of product;let a=index">
+            <td>{{a+1}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.cost}}</td>
+        </tr>
+    </table>
+</body>
+</html>
